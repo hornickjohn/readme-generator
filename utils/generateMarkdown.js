@@ -7,7 +7,7 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  return license + ".com or something";
+  return `[${license}]()`;
 }
 
 // TODO: Create a function that returns the license section of README
@@ -16,9 +16,9 @@ function renderLicenseSection(license) {
   if(license === "no license") {
     return "";
   } else {
-    return `## <a name="License"></a> License
+    return `## License
 
-${license} - ${renderLicenseLink(license)}
+${renderLicenseLink(license)}
 
 `;
   }
@@ -28,7 +28,7 @@ function renderGenericSection(name,content) {
   if(content === "") {
     return "";
   } else {
-    return `## <a name="${name}"></a> ${name}
+    return `## ${name}
 
 ${content}
 
@@ -41,31 +41,31 @@ function renderTableOfContents(data) {
   
 `;
   if(data.description !== "") {
-    rv += `* [Description](#Description)
+    rv += `* [Description](#description)
 `;
   }
   if(data.installation !== "") {
-    rv += `* [Installation](#Installation)
+    rv += `* [Installation](#installation)
 `;
   }
   if(data.usage !== "") {
-    rv += `* [Usage](#Usage)
+    rv += `* [Usage](#usage)
 `;
   }
   if(data.contributing !== "") {
-    rv += `* [Contributing](#Contributing)
+    rv += `* [Contributing](#contributing)
 `;
   }
   if(data.tests !== "") {
-    rv += `* [Tests](#Tests)
+    rv += `* [Tests](#tests)
 `;
   }
   if(data.license !== "no license") {
-    rv += `* [License](#License)
+    rv += `* [License](#license)
 `;
   }
   if(data.email !== "" || data.username !== "") {
-    rv += `* [Questions](#Questions)
+    rv += `* [Questions](#questions)
 `;
   }
   rv += `
@@ -77,11 +77,11 @@ function renderQuestionsSection(username,email) {
   if(username === "" && email === "") {
     return "";
   } else {
-    return `## <a name="Questions"></a> Questions
+    return `## Questions
 
 Contact with questions/comments:
-GitHub Username: ${username}
-Email: ${email}
+* GitHub: [${username}](https://github.com/${username})
+* Email: ${email}
     
 `;
   }
