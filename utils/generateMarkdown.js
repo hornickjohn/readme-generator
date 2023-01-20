@@ -1,17 +1,15 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
 function renderLicenseBadge(license) {
 
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
+//Creates a link to the license
 function renderLicenseLink(license) {
+  //TODO actually figure out the link
   return `[${license}]()`;
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// Displays the hyperlinked license in license section
 function renderLicenseSection(license) {
   if(license === "no license") {
     return "";
@@ -24,6 +22,7 @@ ${renderLicenseLink(license)}
   }
 }
 
+//Renders any section that is just a string of content below a title
 function renderGenericSection(name,content) {
   if(content === "") {
     return "";
@@ -36,6 +35,7 @@ ${content}
   }
 }
 
+// Fill table of contents with links to each section that will exist
 function renderTableOfContents(data) {
   let rv = `## Table of Contents
   
@@ -73,6 +73,7 @@ function renderTableOfContents(data) {
   return rv;
 }
 
+//Put email and/or username in Questions section
 function renderQuestionsSection(username,email) {
   if(username === "" && email === "") {
     return "";
@@ -87,7 +88,7 @@ Contact with questions/comments:
   }
 }
 
-// TODO: Create a function to generate markdown for README
+//Pass the data around to section functions to render each part in order
 function generateMarkdown(data) {
   return "# " + data.title + "\n\n" + 
   renderTableOfContents(data) + 
