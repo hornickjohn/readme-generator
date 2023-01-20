@@ -1,17 +1,51 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
+// Returns a displayable badge that links to the license
 function renderLicenseBadge(license) {
-
+  if(license === "No License") {
+    return "";
+  } else {
+    let formattedLicense = 'License Badge Retrieval Error';
+    if(license === "MIT License") {
+      formattedLicense = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
+    } else if(license === "ISC License") {
+      formattedLicense = `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`;
+    } else if(license === "IBM License") {
+      formattedLicense = `[![License: IPL 1.0](https://img.shields.io/badge/License-IPL_1.0-blue.svg)](https://opensource.org/licenses/IPL-1.0)`;
+    } else if(license === "Eclipse License") {
+      formattedLicense = `[![License](https://img.shields.io/badge/License-EPL_1.0-red.svg)](https://opensource.org/licenses/EPL-1.0)`;
+    } else if(license === "Apache License") {
+      formattedLicense = `[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`;
+    } else if(license === "Boost License") {
+      formattedLicense = '[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)';
+    }
+    return formattedLicense + '\n\n';
+  }
 }
 
 //Creates a link to the license
 function renderLicenseLink(license) {
-  //TODO actually figure out the link
-  return `[${license}]()`;
+  if(license === "No License") {
+    return "";
+  } else {
+    let formattedLicense = 'License Badge Retrieval Error';
+    if(license === "MIT License") {
+      return `[${license}](https://opensource.org/licenses/MIT)`;
+    } else if(license === "ISC License") {
+      return `[${license}](https://opensource.org/licenses/ISC)`;
+    } else if(license === "IBM License") {
+      return `[${license}](https://opensource.org/licenses/IPL-1.0)`;
+    } else if(license === "Eclipse License") {
+      return `[${license}](https://opensource.org/licenses/EPL-1.0)`;
+    } else if(license === "Apache License") {
+      return `[${license}](https://opensource.org/licenses/Apache-2.0)`;
+    } else if(license === "Boost License") {
+      return `[${license}](https://www.boost.org/LICENSE_1_0.txt)`;
+    }
+  }
 }
 
 // Displays the hyperlinked license in license section
 function renderLicenseSection(license) {
-  if(license === "no license") {
+  if(license === "No License") {
     return "";
   } else {
     return `## License
@@ -60,7 +94,7 @@ function renderTableOfContents(data) {
     rv += `* [Tests](#tests)
 `;
   }
-  if(data.license !== "no license") {
+  if(data.license !== "No License") {
     rv += `* [License](#license)
 `;
   }
@@ -91,6 +125,7 @@ Contact with questions/comments:
 //Pass the data around to section functions to render each part in order
 function generateMarkdown(data) {
   return "# " + data.title + "\n\n" + 
+  renderLicenseBadge(data.license) + 
   renderTableOfContents(data) + 
   renderGenericSection('Description',data.description) + 
   renderGenericSection('Installation',data.installation) + 
