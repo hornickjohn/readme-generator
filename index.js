@@ -1,7 +1,7 @@
 // Include necessary packages
 const fileStream = require('fs');
-const { Console } = require('console');
 const generateMarkdown = require('./utils/generateMarkdown');
+const inquirer = require('inquirer');
 
 //validation to be passed for required prompts
 const RequireAnswer = input => input.trim() !== "";
@@ -34,7 +34,6 @@ function writeToFile(fileName, data) {
 //setup and run prompts
 function init() {
     console.log('Starred (*) prompts require input.');
-    var inquirer = require('inquirer');
     inquirer.prompt([
         ...questions
     ])

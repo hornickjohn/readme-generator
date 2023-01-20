@@ -26,7 +26,6 @@ function renderLicenseLink(license) {
   if(license === "No License") {
     return "";
   } else {
-    let formattedLicense = 'License Badge Retrieval Error';
     if(license === "MIT License") {
       return `[${license}](https://opensource.org/licenses/MIT)`;
     } else if(license === "ISC License") {
