@@ -14,8 +14,7 @@ const questions = [
     { name:'usage',message:'*Usage of the product:',validate:RequireAnswer },
     { name:'contributing',message:'Guidelines for contribution:' },
     { name:'tests',message:'Testing instructions:' },
-    //TODO populate list with real license options
-    { name:'license',type:'list',choices:['no license','license 1','license 2','license 3','license 4','license 5'] },
+    { name:'license',type:'list',choices:['No License','MIT License','ISC License','IBM License','Eclipse License','Apache License','Boost License'] },
     { name:'username',message:'*GitHub username:',validate:RequireAnswer },
     { name:'email', message:'*Email address:',validate:RequireAnswer },
     { name:'filePath', message:'Target Filepath (default is README.md in this directory):' }
@@ -41,7 +40,7 @@ function init() {
     ])
     .then((answers) => {
         //get filepath from input, set to default if none
-        const fp = answers.filePath;
+        let fp = answers.filePath;
         if(fp.trim() === "") {
             fp = "README.md";
         }
