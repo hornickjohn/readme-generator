@@ -32,7 +32,7 @@ function init() {
     .then((answers) => {
         // Use user feedback for... whatever!!
         //form of: object with data in form of questionname:typedanswer
-        console.log(generateMarkdown(answers));
+        require ("fs").writeFile ("testreadme.md", generateMarkdown(answers), function() { console.log('saved'); });
     })
     .catch((error) => {
         if (error.isTtyError) {

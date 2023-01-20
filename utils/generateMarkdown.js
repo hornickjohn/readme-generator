@@ -7,7 +7,7 @@ function renderLicenseBadge(license) {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-  return license + ".com or something lmao";
+  return license + ".com or something";
 }
 
 // TODO: Create a function that returns the license section of README
@@ -16,7 +16,7 @@ function renderLicenseSection(license) {
   if(license === "no license") {
     return "";
   } else {
-    return `## License
+    return `##<a name="License"></a> License
 
 ${license} - ${renderLicenseLink(license)}
 
@@ -28,7 +28,7 @@ function renderGenericSection(name,content) {
   if(content === "") {
     return "";
   } else {
-    return `## ${name}
+    return `##<a name="${name}"></a> ${name}
 
 ${content}
 
@@ -37,11 +37,52 @@ ${content}
 }
 
 function renderTableOfContents(data) {
-
+  let rv = `## Table of Contents
+  
+  `;
+  if(data.description !== "") {
+    rv += `[Description](#Description)
+    `;
+  }
+  if(data.installation !== "") {
+    rv += `[Installation](#Installation)
+    `;
+  }
+  if(data.usage !== "") {
+    rv += `[Usage](#Usage)
+    `;
+  }
+  if(data.contributing !== "") {
+    rv += `[Contributing](#Contributing)
+    `;
+  }
+  if(data.tests !== "") {
+    rv += `[Tests](#Tests)
+    `;
+  }
+  if(data.license !== "no license") {
+    rv += `[License](#License)
+    `;
+  }
+  if(data.email !== "" || data.username !== "") {
+    rv += `[Questions](#Questions)
+    `;
+  }
+  return rv;
 }
 
-function renderQuestions(username,email) {
-  
+function renderQuestionsSection(username,email) {
+  if(username === "" && email === "") {
+    return "";
+  } else {
+    return `##<a name="Questions"></a> Questions
+
+Contact with questions/comments:
+GitHub Username: ${username}
+Email: ${email}
+    
+`;
+  }
 }
 
 // TODO: Create a function to generate markdown for README
@@ -53,7 +94,8 @@ function generateMarkdown(data) {
   renderGenericSection('Usage',data.usage) + 
   renderGenericSection('Contributing',data.contributing) + 
   renderGenericSection('Tests',data.tests) + 
-  renderLicenseSection(data.license);
+  renderLicenseSection(data.license) + 
+  renderQuestionsSection(data.username, data.email);  
 }
 
 module.exports = generateMarkdown;
