@@ -16,7 +16,7 @@ function renderLicenseSection(license) {
   if(license === "no license") {
     return "";
   } else {
-    return `##<a name="License"></a> License
+    return `## <a name="License"></a> License
 
 ${license} - ${renderLicenseLink(license)}
 
@@ -28,7 +28,7 @@ function renderGenericSection(name,content) {
   if(content === "") {
     return "";
   } else {
-    return `##<a name="${name}"></a> ${name}
+    return `## <a name="${name}"></a> ${name}
 
 ${content}
 
@@ -39,35 +39,37 @@ ${content}
 function renderTableOfContents(data) {
   let rv = `## Table of Contents
   
-  `;
+`;
   if(data.description !== "") {
-    rv += `[Description](#Description)
-    `;
+    rv += `* [Description](#Description)
+`;
   }
   if(data.installation !== "") {
-    rv += `[Installation](#Installation)
-    `;
+    rv += `* [Installation](#Installation)
+`;
   }
   if(data.usage !== "") {
-    rv += `[Usage](#Usage)
-    `;
+    rv += `* [Usage](#Usage)
+`;
   }
   if(data.contributing !== "") {
-    rv += `[Contributing](#Contributing)
-    `;
+    rv += `* [Contributing](#Contributing)
+`;
   }
   if(data.tests !== "") {
-    rv += `[Tests](#Tests)
-    `;
+    rv += `* [Tests](#Tests)
+`;
   }
   if(data.license !== "no license") {
-    rv += `[License](#License)
-    `;
+    rv += `* [License](#License)
+`;
   }
   if(data.email !== "" || data.username !== "") {
-    rv += `[Questions](#Questions)
-    `;
+    rv += `* [Questions](#Questions)
+`;
   }
+  rv += `
+`;
   return rv;
 }
 
@@ -75,7 +77,7 @@ function renderQuestionsSection(username,email) {
   if(username === "" && email === "") {
     return "";
   } else {
-    return `##<a name="Questions"></a> Questions
+    return `## <a name="Questions"></a> Questions
 
 Contact with questions/comments:
 GitHub Username: ${username}
