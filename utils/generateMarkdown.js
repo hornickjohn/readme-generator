@@ -57,7 +57,7 @@ ${renderLicenseLink(license)}
 
 //Renders any section that is just a string of content below a title
 function renderGenericSection(name,content) {
-  if(content === "") {
+  if(content.trim() === "") {
     return "";
   } else {
     return `## ${name}
@@ -73,23 +73,23 @@ function renderTableOfContents(data) {
   let rv = `## Table of Contents
   
 `;
-  if(data.description !== "") {
+  if(data.description.trim() !== "") {
     rv += `* [Description](#description)
 `;
   }
-  if(data.installation !== "") {
+  if(data.installation.trim() !== "") {
     rv += `* [Installation](#installation)
 `;
   }
-  if(data.usage !== "") {
+  if(data.usage.trim() !== "") {
     rv += `* [Usage](#usage)
 `;
   }
-  if(data.contributing !== "") {
+  if(data.contributing.trim() !== "") {
     rv += `* [Contributing](#contributing)
 `;
   }
-  if(data.tests !== "") {
+  if(data.tests.trim() !== "") {
     rv += `* [Tests](#tests)
 `;
   }
@@ -97,7 +97,7 @@ function renderTableOfContents(data) {
     rv += `* [License](#license)
 `;
   }
-  if(data.email !== "" || data.username !== "") {
+  if(data.email.trim() !== "" || data.username.trim() !== "") {
     rv += `* [Questions](#questions)
 `;
   }
@@ -108,7 +108,7 @@ function renderTableOfContents(data) {
 
 //Put email and/or username in Questions section
 function renderQuestionsSection(username,email) {
-  if(username === "" && email === "") {
+  if(username.trim() === "" && email.trim() === "") {
     return "";
   } else {
     return `## Questions
